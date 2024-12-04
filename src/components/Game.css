@@ -1,0 +1,200 @@
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 100vw;
+    box-sizing: border-box;
+}
+
+.game-header {
+    width: 100%;
+    max-width: 450px;
+    margin-bottom: 20px;
+}
+
+.score-container {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.game-board {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    margin-bottom: 20px;
+}
+
+.game-canvas {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    touch-action: none; /* 防止移动端默认触摸行为 */
+}
+
+.game-controls {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.start-button,
+.pause-button,
+.restart-button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    touch-action: manipulation; /* 优化移动端点击 */
+}
+
+.pause-button {
+    background-color: #2196F3;
+}
+
+.restart-button {
+    background-color: #f44336;
+}
+
+.game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.mobile-controls {
+    margin-top: 20px;
+    text-align: center;
+    display: none; /* 默认隐藏移动端控制提示 */
+}
+
+.screenshot-button {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #FF69B4;
+    color: white;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+}
+
+.screenshot-button:hover {
+    background-color: #FF1493;
+}
+
+.game-over .screenshot-button {
+    margin-top: 10px;
+    margin-left: 0;
+    width: 100%;
+    background-color: #FF69B4;
+}
+
+/* 移动端样式 */
+@media (max-width: 768px) {
+    .game-container {
+        padding: 10px;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .game-header {
+        padding: 10px;
+    }
+
+    .game-board {
+        width: 100%;
+        max-width: 100vmin; /* 使用vmin单位确保在任何方向都能完整显示 */
+        aspect-ratio: 1;
+        margin: 0 auto;
+    }
+
+    .game-canvas {
+        width: 100%;
+        height: 100%;
+        touch-action: none;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    .mobile-controls {
+        display: block;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .control-hint {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 10px;
+        border-radius: 10px;
+        margin: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .control-hint p {
+        margin: 5px 0;
+        color: #FF69B4;
+        font-weight: bold;
+    }
+
+    .game-controls button {
+        min-width: 120px;
+        min-height: 44px; /* 确保按钮足够大，易于点击 */
+        margin: 5px;
+        font-size: 1.2em;
+    }
+
+    .game-over {
+        width: 80%;
+        max-width: 300px;
+    }
+}
+
+/* 横屏优化 */
+@media (max-width: 768px) and (orientation: landscape) {
+    .game-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .game-board {
+        max-height: 90vh;
+        margin: 0 20px;
+    }
+
+    .mobile-controls {
+        margin: 0 10px;
+    }
+}
+
+/* 防止iOS设备上的橡皮筋效果和双击缩放 */
+@supports (-webkit-touch-callout: none) {
+    body {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .game-container {
+        height: 100%;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+} 

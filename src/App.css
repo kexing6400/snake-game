@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+}
+
+.app {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(135deg, #FFE4E1 0%, #FFF0F5 100%);
+}
+
+/* 禁用默认的触摸行为 */
+canvas {
+    touch-action: none;
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+    body {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* 适配不同设备 */
+@media (orientation: landscape) {
+    .app {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+/* 动画和过渡效果 */
+.fade-enter {
+    opacity: 0;
+}
+
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in;
+}
+
+.fade-exit {
+    opacity: 1;
+}
+
+.fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms ease-in;
+}
+
+/* 加载动画 */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #FFB6C6;
+    border-top: 4px solid #FF69B4;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
