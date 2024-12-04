@@ -12,14 +12,14 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
         with:
           persist-credentials: false
 
-      - name: Setup Node.js 🔧
+      - name: Setup Node.js ⚙️
         uses: actions/setup-node@v3
         with:
           node-version: '18'
@@ -28,7 +28,7 @@ jobs:
       - name: Install Dependencies 📦
         run: npm ci     # 使用 ci 而不是 install，更快更稳定
 
-      - name: Build 🏗️
+      - name: Build 🔨
         run: npm run build
         env:
           CI: false    # 防止将警告视为错误
